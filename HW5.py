@@ -1,4 +1,6 @@
 import random
+def out_red(text):
+    print("\033[31m {}" .format(text))
 #Морской бой
 map = [
     ['  ','A ','B ','C ','D ','E ','F ','G ','I ','H ','K '],
@@ -47,3 +49,56 @@ for i in map:
     print()       
 if count > 0: print(f'Поздравляю. Вы потопили {count} кораблей')
 else: print(f'Попробуй еще раз.Вы не потопили ни одного корабля')
+
+
+
+# крестики нолики
+map = [
+    ['. ','. ','. '],
+    ['. ','. ','. '],
+    ['. ','. ','. ']
+]
+
+
+for i in range(1,10):
+    if (map[0][0] == 'O 'and map[1][1]== 'O ' and map[2][2]== 'O ') or (map[0][0] == 'O 'and map[0][1]== 'O ' and map[0][2]== 'O ') or\
+        (map[1][0] == 'O 'and map[1][1]== 'O ' and map[1][2]== 'O ') or (map[2][0] == 'O 'and map[2][1]== 'O ' and map[2][2]== 'O ') or\
+        (map[0][0] == 'O 'and map[1][0]== 'O ' and map[2][0]== 'O ') or (map[0][1] == 'O 'and map[1][1]== 'O ' and map[2][1]== 'O ') or\
+        (map[0][2] == 'O 'and map[1][2]== 'O ' and map[2][2]== 'O '):
+        print ('Победил компьютер')
+        break
+    elif (map[0][0] == 'X 'and map[1][1]== 'X ' and map[2][2]== 'X ') or (map[0][0] == 'X 'and map[0][1]== 'X ' and map[0][2]== 'X ') or\
+        (map[1][0] == 'X 'and map[1][1]== 'X ' and map[1][2]== 'X ') or (map[2][0] == 'X 'and map[2][1]== 'X ' and map[2][2]== 'X ') or\
+        (map[0][0] == 'X 'and map[1][0]== 'X ' and map[2][0]== 'X ') or (map[0][1] == 'X 'and map[1][1]== 'X ' and map[2][1]== 'X ') or\
+        (map[0][2] == 'X 'and map[1][2]== 'X ' and map[2][2]== 'X ') :
+        print ('Ура, Вы победили!')
+        break
+    else:
+        print(f'Ваш ход #{i}')
+        print('Куда поставите крестик ?')
+        userx = int(input('X : '))
+        usery = int(input('Y : '))
+        for i in range(1,5):
+            if map[usery-1][userx-1] == '. ':
+                map[usery-1][userx-1] = 'X '
+                break
+            elif map[usery-1][userx-1] != '. ':
+                print('Поменяйте расположение крестика')
+                userx = int(input('X : '))
+                usery = int(input('Y : '))
+
+    print(f'Ход компьютера #{i}')
+    compx = random.randint(0,2)
+    compy = random.randint(0,2)
+    for n in range(1,10):
+        if map[compy][compx] == '. ':
+            map[compy][compx] = 'O '
+            break
+        elif map[compy][compx] != '. ':                
+            compx = random.randint(0,2)
+            compy = random.randint(0,2)
+                
+    for k in map:
+        for l in k:
+            print(l, end = ' ')
+        print()
