@@ -1,6 +1,5 @@
 import random
-def out_red(text):
-    print("\033[31m {}" .format(text))
+
 #Морской бой
 map = [
     ['  ','A ','B ','C ','D ','E ','F ','G ','I ','H ','K '],
@@ -59,7 +58,6 @@ map = [
     ['. ','. ','. ']
 ]
 
-
 for i in range(1,10):
     if (map[0][0] == 'O 'and map[1][1]== 'O ' and map[2][2]== 'O ') or (map[0][0] == 'O 'and map[0][1]== 'O ' and map[0][2]== 'O ') or\
         (map[1][0] == 'O 'and map[1][1]== 'O ' and map[1][2]== 'O ') or (map[2][0] == 'O 'and map[2][1]== 'O ' and map[2][2]== 'O ') or\
@@ -73,6 +71,10 @@ for i in range(1,10):
         (map[0][2] == 'X 'and map[1][2]== 'X ' and map[2][2]== 'X ') :
         print ('Ура, Вы победили!')
         break
+    elif (map[0][0] == 'X 'and map[0][1]== 'X ' and map[0][2]== 'X 'and map[1][0] == 'X 'and map[1][1]== 'X ' and map[1][2]== 'X ' and\
+        map[2][0] == 'X 'and map[2][1]== 'X ' and map[2][2]== 'X ') or (map[0][0] == 'O 'and map[0][1]== 'O ' and map[0][2]== 'O 'and\
+        map[1][0] == 'O 'and map[1][1]== 'O ' and map[1][2]== 'O ' and map[2][0] == 'O 'and map[2][1]== 'O ' and map[2][2]== 'O '):
+        print('Вы сыграли вничью')
     else:
         print(f'Ваш ход #{i}')
         print('Куда поставите крестик ?')
@@ -86,7 +88,7 @@ for i in range(1,10):
                 print('Поменяйте расположение крестика')
                 userx = int(input('X : '))
                 usery = int(input('Y : '))
-
+    
     print(f'Ход компьютера #{i}')
     compx = random.randint(0,2)
     compy = random.randint(0,2)
