@@ -34,8 +34,7 @@ main(n,m)
 # Компьютер загадывает слово. А мы его угадываем. Делаем с помощью функций. 
 # Кто хочет посложней - добавляем очки и барабан.
 
-print('ДОБРО ПОЖАЛОВАТЬ В ИГРУ ПОЛЕ ЧУДЕС')
-print()
+
 spisok = {'жупа': 'Как у западных и южных славян назывались селение, деревня, курень?',\
 'чихание': 'мы можем собственными силами разогнать воздушный поток до 150–170 км/ч. В процессе чего человек способен произвести такой воздушный поток?',\
 'сковорода': 'Что использовали в Китае для глажки белья вместо утюга?',\
@@ -82,23 +81,37 @@ def bukva(bukva,slovo,schet):
 #на табло  пустые подчеркивания под буквы    
 def slovo(word, letter):
     letter = letter.lower()
-    for j in word:
-        for i in range(len(word)):
-            if j == letter[i]: print(letter[i], end = ' ')
-            else: print('_', end = ' ')
-    return letter
+    for i in word:
+        if i == letter: 
+            #l.append(letter)
+            print(letter, end = ' ')
+        else: 
+            #l.append('_')
+            print('_', end = ' ')
+    return word
+  
 
-
+print('ДОБРО ПОЖАЛОВАТЬ В ИГРУ ПОЛЕ ЧУДЕС')
+print()
 word = vopros(spisok)
-i = baraban()
 
-bukvi = ' '
+
+k = 0
+
+#while k >= (len(word)+3) :
+print(f'У вас {len(word)+3} попыток')
+i = baraban()
 print('Крутите барабан') 
 print(f'На барабане {i} очков')
 letter = input('Ваша буква ? ')
-n = bukva(letter,word,1)
-k = slovo(word,letter)
-print(word)
+n = bukva(letter,word,i)
+otgad_slovo = slovo(word,letter)
+print(otgad_slovo)
+k += 1
+
+#else: print('Все')
+
+
 
 
 
